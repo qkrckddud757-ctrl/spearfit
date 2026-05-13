@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>스포짐 서교점 - 운동 100가지 가이드</title>
+<meta name="description" content="스포짐 서교점 박창영 매니저가 직접 정리한 헬스장 운동 100가지 가이드. 초심자 필수 30 + 부위별 확장 50 + 대체운동 20.">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+body { font-family:'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif; background:#f7f7f8; color:#1a1a1a; line-height:1.6; word-break:keep-all; }
+.container { max-width:980px; margin:0 auto; padding:24px 16px 80px; }
+
+/* Header */
+.header { text-align:center; padding:40px 0 32px; border-bottom:2px solid #1a1a1a; margin-bottom:32px; }
+.header h1 { font-size:28px; font-weight:800; letter-spacing:-1px; }
+.header .sub { color:#666; font-size:14px; margin-top:8px; }
+.header .tag { display:inline-block; background:#1a1a1a; color:#fff; padding:6px 14px; border-radius:999px; font-size:12px; margin-top:14px; font-weight:600; }
+
+/* Intro */
+.intro { background:#fff; border:1px solid #e5e5e5; border-radius:16px; padding:24px; margin-bottom:24px; }
+.intro h2 { font-size:18px; margin-bottom:12px; }
+.intro p { color:#444; font-size:14px; margin-bottom:8px; }
+.intro .author { font-size:13px; color:#666; margin-top:14px; padding-top:14px; border-top:1px solid #eee; }
+
+/* Filter */
+.filter { display:flex; gap:8px; overflow-x:auto; padding:4px 0 16px; margin-bottom:8px; -webkit-overflow-scrolling:touch; }
+.filter::-webkit-scrollbar { display:none; }
+.filter button { padding:10px 16px; border:1px solid #d0d0d0; background:#fff; border-radius:999px; font-size:13px; font-weight:600; white-space:nowrap; cursor:pointer; color:#444; }
+.filter button.active { background:#1a1a1a; color:#fff; border-color:#1a1a1a; }
+.filter button:active { transform:scale(0.96); }
+
+.search { width:100%; padding:14px 16px; border:1px solid #d0d0d0; border-radius:12px; font-size:14px; margin-bottom:16px; background:#fff; }
+.search:focus { outline:none; border-color:#1a1a1a; }
+
+.count { font-size:12px; color:#888; margin-bottom:12px; padding-left:4px; }
+
+/* Card */
+.grid { display:grid; gap:12px; grid-template-columns:1fr; }
+@media (min-width:640px) { .grid { grid-template-columns:repeat(2,1fr); } }
+.card { background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:18px 18px 20px; cursor:pointer; transition:all 0.15s; }
+.card:active { transform:scale(0.98); background:#fafafa; }
+.card .num { font-size:11px; color:#999; font-weight:700; letter-spacing:0.5px; }
+.card h3 { font-size:17px; font-weight:700; margin-top:4px; margin-bottom:10px; }
+.card .badges { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; }
+.card .badge { font-size:11px; padding:3px 9px; border-radius:6px; font-weight:600; }
+.b-muscle { background:#e8f0fe; color:#1a56db; }
+.b-cat-init { background:#fef3c7; color:#92400e; }
+.b-cat-ext { background:#d1fae5; color:#065f46; }
+.b-cat-alt { background:#fce7f3; color:#9d174d; }
+.card .sets { font-size:13px; color:#555; font-weight:600; }
+.card .arrow { float:right; color:#bbb; font-size:18px; margin-top:-2px; }
+
+/* Modal */
+.modal-bg { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:50; padding:20px; overflow-y:auto; align-items:flex-start; justify-content:center; }
+.modal-bg.show { display:flex; }
+.modal { background:#fff; border-radius:16px; max-width:560px; width:100%; padding:28px 24px; position:relative; }
+.modal .close { position:absolute; top:14px; right:18px; background:none; border:none; font-size:26px; cursor:pointer; color:#888; }
+.modal .num { font-size:12px; color:#999; font-weight:700; }
+.modal h2 { font-size:24px; font-weight:800; margin:6px 0 14px; }
+.modal .badges { margin-bottom:18px; }
+.modal .badge { font-size:12px; padding:4px 10px; }
+.modal .sec { margin-top:18px; }
+.modal .sec-title { font-size:12px; font-weight:700; color:#888; letter-spacing:0.5px; margin-bottom:6px; text-transform:uppercase; }
+.modal .sec-body { font-size:15px; line-height:1.7; color:#222; }
+.modal .sets-big { background:#1a1a1a; color:#fff; padding:14px 16px; border-radius:10px; font-size:15px; font-weight:600; margin-top:14px; }
+.modal .tip { background:#fffbeb; border-left:3px solid #f59e0b; padding:14px 16px; border-radius:0 10px 10px 0; margin-top:14px; }
+.modal .tip .sec-title { color:#92400e; }
+.modal .media-placeholder { background:#f3f4f6; border:2px dashed #cbd5e0; border-radius:10px; padding:30px 20px; text-align:center; color:#888; font-size:13px; margin-top:16px; }
+
+/* Footer */
+.foot { margin-top:50px; padding:28px 20px; background:#1a1a1a; color:#fff; border-radius:14px; text-align:center; }
+.foot h3 { font-size:18px; margin-bottom:10px; font-weight:700; }
+.foot p { font-size:13px; color:#aaa; line-height:1.8; }
+.foot .cta { display:inline-block; background:#fff; color:#1a1a1a; padding:12px 24px; border-radius:8px; margin-top:14px; text-decoration:none; font-weight:700; font-size:14px; }
+
+.disclaimer { font-size:11px; color:#999; text-align:center; margin-top:20px; line-height:1.7; padding:0 10px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>운동 100가지 가이드</h1>
+    <div class="sub">스포짐 서교점 박창영 매니저 직접 정리</div>
+    <div class="tag">운동 초심자 독립 패키지</div>
+  </div>
+
+  <div class="intro">
+    <h2>이 가이드를 이렇게 쓰세요</h2>
+    <p>1:1 PT 수업 때 배운 운동은 여기서 다시 확인하시고, 혼자 운동하실 때 부위별로 골라 쓰시면 됩니다.</p>
+    <p>초심자 필수 30가지부터 차근차근 익히신 다음, 부위별 확장 50가지로 넓혀가시면 돼요. 집/출장 갈 때는 대체운동 20가지로 끊김 없이.</p>
+    <div class="author">박창영 매니저 · 10년차 트레이너 · NASM 교정운동 전문가</div>
+  </div>
+
+  <input type="text" class="search" id="search" placeholder="🔍 운동 이름 또는 부위 검색 (예: 스쿼트, 가슴)">
+
+  <div class="filter" id="filterCat">
+    <button class="active" data-cat="all">전체 100</button>
+    <button data-cat="초심자">초심자 30</button>
+    <button data-cat="확장">확장 50</button>
+    <button data-cat="대체">대체 20</button>
+  </div>
+
+  <div class="filter" id="filterMuscle">
+    <button class="active" data-muscle="all">모든 부위</button>
+    <button data-muscle="가슴">가슴</button>
+    <button data-muscle="등">등</button>
+    <button data-muscle="어깨">어깨</button>
+    <button data-muscle="팔">팔</button>
+    <button data-muscle="하체">하체</button>
+    <button data-muscle="코어">코어</button>
+    <button data-muscle="유산소">유산소</button>
+    <button data-muscle="전신">전신</button>
+  </div>
+
+  <div class="count" id="count">총 100개</div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="foot">
+    <h3>운동하다 헷갈리면 박창영 매니저에게 바로 물어보세요</h3>
+    <p>스포짐 서교점 · 서울 마포구 서교동<br>1:1 PT · 800평 규모 · 무료주차 · 사우나</p>
+    <a class="cta" href="#" onclick="alert('전화 또는 카운터 방문');return false;">상담 / 등록 문의</a>
+  </div>
+
+  <p class="disclaimer">
+    ⚠️ 본 가이드는 일반적인 운동 정보로, 개인의 체형·건강 상태에 따라 적합한 운동과 강도가 다를 수 있습니다.<br>
+    통증·지병·수술 이력이 있으신 경우 반드시 트레이너 또는 의료진과 상담 후 진행하세요.<br>
+    운동 중 부상 발생 시 스포짐 서교점은 책임지지 않습니다.
+  </p>
+</div>
+
+<div class="modal-bg" id="modalBg" onclick="closeIf(event)">
+  <div class="modal" id="modal" onclick="event.stopPropagation()">
+    <button class="close" onclick="closeModal()">×</button>
+    <div class="num" id="m-num"></div>
+    <h2 id="m-name"></h2>
+    <div class="badges">
+      <span class="badge b-muscle" id="m-muscle"></span>
+      <span class="badge" id="m-cat"></span>
+    </div>
+    <div class="sets-big" id="m-sets"></div>
+    <div class="sec">
+      <div class="sec-title">동작 방법</div>
+      <div class="sec-body" id="m-desc"></div>
+    </div>
+    <div class="tip">
+      <div class="sec-title">💡 박창영 매니저 TIP</div>
+      <div class="sec-body" id="m-tip"></div>
+    </div>
+    <div class="media-placeholder">
+      📷 시범 사진 / 🎬 동작 영상 — 곧 추가됩니다
+    </div>
+  </div>
+</div>
+
+<script>
+let exercises = [];
+let curCat = 'all', curMuscle = 'all', curSearch = '';
+
+fetch('exercises.json').then(r => r.json()).then(data => {
+  exercises = data;
+  render();
+});
+
+function render() {
+  const q = curSearch.toLowerCase();
+  const filtered = exercises.filter(e => {
+    if (curCat !== 'all' && e.category !== curCat) return false;
+    if (curMuscle !== 'all' && e.muscle !== curMuscle) return false;
+    if (q && !(e.name.toLowerCase().includes(q) || e.muscle.toLowerCase().includes(q))) return false;
+    return true;
+  });
+  const grid = document.getElementById('grid');
+  grid.innerHTML = filtered.map(e => `
+    <div class="card" onclick="openModal(${e.id})">
+      <div class="num">#${String(e.id).padStart(3,'0')} <span class="arrow">›</span></div>
+      <h3>${e.name}</h3>
+      <div class="badges">
+        <span class="badge b-muscle">${e.muscle}</span>
+        <span class="badge ${catBadge(e.category)}">${e.category}</span>
+      </div>
+      <div class="sets">${e.sets}</div>
+    </div>
+  `).join('') || '<div style="grid-column:1/-1;text-align:center;padding:40px;color:#999;font-size:14px;">검색 결과가 없습니다</div>';
+  document.getElementById('count').textContent = `총 ${filtered.length}개`;
+}
+
+function catBadge(c) {
+  return c === '초심자' ? 'b-cat-init' : c === '확장' ? 'b-cat-ext' : 'b-cat-alt';
+}
+
+function openModal(id) {
+  const e = exercises.find(x => x.id === id);
+  if (!e) return;
+  document.getElementById('m-num').textContent = `#${String(e.id).padStart(3,'0')}`;
+  document.getElementById('m-name').textContent = e.name;
+  document.getElementById('m-muscle').textContent = e.muscle;
+  document.getElementById('m-muscle').className = 'badge b-muscle';
+  document.getElementById('m-cat').textContent = e.category;
+  document.getElementById('m-cat').className = 'badge ' + catBadge(e.category);
+  document.getElementById('m-sets').textContent = e.sets;
+  document.getElementById('m-desc').textContent = e.desc;
+  document.getElementById('m-tip').textContent = e.tip;
+  document.getElementById('modalBg').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalBg').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+function closeIf(e) {
+  if (e.target.id === 'modalBg') closeModal();
+}
+
+document.getElementById('search').addEventListener('input', e => {
+  curSearch = e.target.value;
+  render();
+});
+
+document.getElementById('filterCat').addEventListener('click', e => {
+  if (e.target.tagName !== 'BUTTON') return;
+  document.querySelectorAll('#filterCat button').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  curCat = e.target.dataset.cat;
+  render();
+});
+
+document.getElementById('filterMuscle').addEventListener('click', e => {
+  if (e.target.tagName !== 'BUTTON') return;
+  document.querySelectorAll('#filterMuscle button').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  curMuscle = e.target.dataset.muscle;
+  render();
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+</script>
+</body>
+</html>
